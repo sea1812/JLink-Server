@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="541df2a2-acc9-4503-9e53-3650c6bf21e3" name="Changes" comment="Init">
+      <change afterPath="$PROJECT_DIR$/app/apis.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/pages.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/pages.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/jlink.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/jlink.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/admin_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/admin_base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/processes.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/processes.html" afterDir="false" />
@@ -16,13 +17,35 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "sea1812"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="ef739c81-dda4-43bd-83ee-e537603bc027" />
+        <option name="url" value="https://github.com/sea1812/JLink-Server.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultGoTemplateProperty": "Go File",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "/home/user/GolandProjects/goJLinkServer"

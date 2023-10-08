@@ -40,8 +40,6 @@
                 <!--a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myNewServerModal"><i class="fa fa-plus"></i> 新增服务器 </a-->
                 <a href="#" class="btn btn-primary" onclick="ShowInserNodeModal();"><i class="fa fa-plus"></i> 新增进程
                 </a>
-                <a href="#" class="btn btn-primary" onclick="ShowInserNodeModal();"><i class="fa fa-plus"></i> 系统负载
-                </a>
             </div>
         </div>
     </div>
@@ -74,12 +72,13 @@
             <td>{{$v.pid}}</td>
             <td>{{$v.now| date "Y-m-d H:i:s"}}</td>
             <td>
-                <button class="btn btn-sm btn-primary">启动进程</button>
-                <button class="btn btn-sm btn-primary">停止进程</button>
-                <button class="btn btn-sm btn-primary">标准输出</button>
-                <button class="btn btn-sm btn-primary">标准错误</button>
-                <button class="btn btn-sm btn-primary">查看设置</button>
-                <button class="btn btn-sm btn-primary">修改设置</button>
+                <button class="btn btn-sm btn-primary" {{if ne $v.statename "STOPPED"}}disabled{{end}} onclick="startProcess('{{$v.name}}','{{$.data.nodeinfo.uni_id}}')">启动进程</button>
+                <button class="btn btn-sm btn-danger"  {{if ne $v.statename "RUNNING"}}disabled{{end}}>停止进程</button>
+                <button class="btn btn-sm btn-info">标准输出</button>
+                <button class="btn btn-sm btn-info">标准错误</button>
+                <button class="btn btn-sm btn-secondary">查看设置</button>
+                <button class="btn btn-sm btn-secondary">修改设置</button>
+                <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
             </td>
         </tr>
         {{end}}

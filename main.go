@@ -18,10 +18,9 @@ func main() {
 	s.BindStatusHandler(404, app.Page404) //绑定状态页
 	//根路径组
 	GroupRoot := s.Group("/")
-	GroupRoot.ALL("/", app.IndexPage)                       //显示首页
-	GroupRoot.ALL("/processes/{uni_id}", app.ProcessPage)   //显示客户端进程信息页面
-	GroupRoot.ALL("/merch/user", app.MerchUser)             //商家信息页面
-	GroupRoot.ALL("/merch/user_edit", app.MerchUser_submit) //商家信息页面
+	GroupRoot.ALL("/", app.IndexPage)                     //显示首页
+	GroupRoot.ALL("/processes/{uni_id}", app.ProcessPage) //显示客户端进程信息页面
+	GroupRoot.ALL("/api/startprocess", app.ApiStartProcess)
 	fmt.Println("Run")
 	s.Run()
 }

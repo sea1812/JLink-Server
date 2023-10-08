@@ -18,3 +18,14 @@ function JumpPage(url){
 function goBack(){
     history.back(-1);
 }
+//启动指定服务器上的指定进程
+function startProcess(AProcessName, ANodeUniid){
+    $.ajax(
+        method:"post",
+        url:"/api/startprocess",
+        data:{"processname":AProcessName, "nodeuniid":ANodeUniid},
+        success:function (result){
+            alert(result);
+        }
+    );
+}
