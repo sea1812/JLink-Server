@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{.version.appname}} - {{.version.appversion}}</title>
+
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="middle-box text-center animated fadeInDown">
+        <h1>403</h1>
+        <h3 class="font-bold">资源不可用</h3>
+
+        <div class="error-desc">
+            您请求的内容不可用，请查看请求的路径和访问权限是否正确。
+        </div>
+        <div class="mt-2">
+            <p><a href="/" class="btn btn-primary mb-2" >返回首页</a><br>
+                <a onclick="history.back();" class="btn btn-link" >返回上页</a>
+            </p>
+
+        </div>
+    </div>
+    <div class="footer">
+        <div class="float-right small">
+            狗狗云&copy; 版权所有 2020-2021
+        </div>
+        <div class="small">
+            {{.version.company}} {{.version.sn}}
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="/static/js/jquery-3.1.1.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+
+</body>
+
+</html>

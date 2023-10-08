@@ -1,0 +1,142 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-8">
+        <h2>{{.pageTitle}}</h2>
+    </div>
+    <div class="col-lg-4">
+        <div class="title-action">
+            <!--a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myNewServerModal"><i class="fa fa-plus"></i> 新增服务器 </a-->
+            <a href="#" class="btn btn-primary"onclick="ShowInserNodeModal();"><i class="fa fa-plus"></i> 新增服务器 </a>
+        </div>
+    </div>
+</div>
+<div class="page-heading">
+        <H1></H1>
+    </div>
+
+    <div class="container1 pb-5">
+        <div class="row">
+            {{range $k, $v := .data.nodes}}
+            <div class="col-3 mb-4">
+                <div class="card">
+                    <div class="card-header bg-primary h6">
+                        <i class="fa fa-server"></i>&nbsp;&nbsp;{{$v.caption}}
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <small class="stats-label">访问地址</small>
+                                <h5>{{$v.ipaddress}}</h5>
+                            </div>
+                            <div class="col-6">
+                                <small class="stats-label">位置</small>
+                                <h5>{{$v.location}}</h5>
+                            </div>
+                        </div>                        <div class="row">
+                        <div class="col-6">
+                            <small class="stats-label">资产编号</small>
+                            <h5>{{$v.reg_id}}</h5>
+                        </div>
+                        <div class="col-6">
+                            <small class="stats-label">上线日期</small>
+                            <h5>{{$v.online_date}}</h5>
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <small class="stats-label">操作系统</small>
+                                <h5>{{$v.os}}</h5>
+                            </div>
+                            <div class="col-6">
+                                <small class="stats-label">状态</small>
+                                <h5 class="text-success">{{$v.stat}}</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <small class="stats-label">备注</small><br>
+                                {{if eq $v.comment "" }}
+                                <small class="stats-label font-italic">-</small>
+                                {{else}}
+                                <small class="stats-label font-italic">{{$v.comment}}</small>
+                                {{end}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-right">
+                        <button class="btn btn-sm btn-info" onclick="JumpPage('/processes/{{$v.uni_id}}')">进程信息</button>
+                        <button class="btn btn-sm btn-info" onclick="">系统信息</button>
+                        <button class="btn btn-sm btn-info" onclick="">应用信息</button>
+                        <button class="btn btn-sm btn-warning" onclick="">节点设置</button>
+                    </div>
+                </div>
+            </div>
+            {{end}}
+        </div>
+    </div>
+<div class="modal inmodal fade" id="myNewServerModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">新增服务器</h4>
+                <small class="font-bold">请在对应服务器上安装JLink客户端软件并输入信息完成新增操作</small>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">名称 *</label>
+                    <div class="col-lg-10">
+                        <input type="text" placeholder="服务器名称，仅供标识使用" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">资产编号</label>
+                    <div class="col-lg-10">
+                        <input type="text" placeholder="资产编号，仅供标记内部资产以方便管理" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">IP地址 *</label>
+                    <div class="col-lg-10">
+                        <input type="text" placeholder="服务器IP地址（包含端口号，如http://192.168.0.10:10010）" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">所在位置</label>
+                    <div class="col-lg-10">
+                        <input type="text" placeholder="服务器所在位置，仅供标记内部资产以方便管理" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">上线日期</label>
+                    <div class="col-lg-10">
+                        <input type="text" placeholder="上线日期，仅供标记内部资产以方便管理" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">操作系统</label>
+                    <div class="col-lg-10">
+                        <input type="text" placeholder="操作系统，仅供临时标记用，上线后会自动更新" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">数字证书 *</label>
+                    <div class="col-lg-10">
+                        <input type="file" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">备注</label>
+                    <div class="col-lg-10">
+                        <textarea row="20" placeholder="备注信息" class="form-control"></textarea>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
