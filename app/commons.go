@@ -66,7 +66,7 @@ func QueryProcesses(AUniId string) (g.Map, error) {
 
 //根据 uni_id 查询服务器节点信息
 func QueryNodeInfo(AUniId string) g.Map {
-	res, _ := g.DB().Model("nodes").Where("uni_id=?", AUniId).Cache(time.Second * 30).One()
+	res, _ := g.DB().Model("nodes").Where("uni_id=?", AUniId).One()
 	if res.IsEmpty() == false {
 		return res.Map()
 	} else {

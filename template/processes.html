@@ -47,11 +47,11 @@
         <thead>
         <th>#</th>
         <th>名称</th>
-        <th>组</th>
+        <th>摘要信息</th>
         <th>状态码</th>
         <th>状态</th>
         <th>PID</th>
-        <th>时间</th>
+        <th>启动时间</th>
         <th>操作</th>
 
         </thead>
@@ -60,7 +60,7 @@
         <tr>
             <td>{{$k}}</td>
             <td>{{$v.name}}</td>
-            <td>{{$v.group}}</td>
+            <td>{{$v.description}}</td>
             <td>{{$v.state}}</td>
             <td>
                 {{if eq $v.statename "RUNNING"}}
@@ -70,7 +70,7 @@
                 {{end}}
             </td>
             <td>{{$v.pid}}</td>
-            <td>{{$v.now| date "Y-m-d H:i:s"}}</td>
+            <td>{{$v.start| date "Y-m-d H:i:s"}}</td>
             <td>
                 <button class="btn btn-sm btn-primary" {{if ne $v.statename "STOPPED"}}disabled{{end}} onclick="startProcess('{{$v.name}}','{{$.data.nodeinfo.uni_id}}')">启动进程</button>
                 <button class="btn btn-sm btn-danger"  {{if ne $v.statename "RUNNING"}}disabled{{end}} onclick="stopProcess('{{$v.name}}','{{$.data.nodeinfo.uni_id}}')">停止进程</button>
