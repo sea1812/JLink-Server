@@ -73,7 +73,7 @@
             <td>{{$v.now| date "Y-m-d H:i:s"}}</td>
             <td>
                 <button class="btn btn-sm btn-primary" {{if ne $v.statename "STOPPED"}}disabled{{end}} onclick="startProcess('{{$v.name}}','{{$.data.nodeinfo.uni_id}}')">启动进程</button>
-                <button class="btn btn-sm btn-danger"  {{if ne $v.statename "RUNNING"}}disabled{{end}}>停止进程</button>
+                <button class="btn btn-sm btn-danger"  {{if ne $v.statename "RUNNING"}}disabled{{end}} onclick="stopProcess('{{$v.name}}','{{$.data.nodeinfo.uni_id}}')">停止进程</button>
                 <button class="btn btn-sm btn-info">标准输出</button>
                 <button class="btn btn-sm btn-info">标准错误</button>
                 <button class="btn btn-sm btn-secondary">查看设置</button>

@@ -33,3 +33,18 @@ function startProcess(AProcessName, ANodeUniid){
         }}
     );
 }
+//停止指定服务器上的指定进程
+function stopProcess(AProcessName, ANodeUniid){
+    $.ajax({
+        method:"post",
+        url:"/api/stopprocess",
+        data:{"processname":AProcessName, "nodeuniid":ANodeUniid},
+        success:function (result) {
+            if(result=="ok"){
+                window.location.reload();
+            }else{
+                alert(result);
+            }
+        }}
+    );
+}

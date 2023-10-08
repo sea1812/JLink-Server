@@ -18,9 +18,10 @@ func main() {
 	s.BindStatusHandler(404, app.Page404) //绑定状态页
 	//根路径组
 	GroupRoot := s.Group("/")
-	GroupRoot.ALL("/", app.IndexPage)                     //显示首页
-	GroupRoot.ALL("/processes/{uni_id}", app.ProcessPage) //显示客户端进程信息页面
-	GroupRoot.ALL("/api/startprocess", app.ApiStartProcess)
+	GroupRoot.ALL("/", app.IndexPage)                       //显示首页
+	GroupRoot.ALL("/processes/{uni_id}", app.ProcessPage)   //显示客户端进程信息页面
+	GroupRoot.ALL("/api/startprocess", app.ApiStartProcess) //启动进程
+	GroupRoot.ALL("/api/stopprocess", app.ApiStopProcess)   //停止进程
 	fmt.Println("Run")
 	s.Run()
 }
