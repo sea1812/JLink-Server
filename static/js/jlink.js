@@ -14,3 +14,7 @@ function ShowEditNodeModal(){
 function JumpPage(url){
     window.location.href = url
 }
+//返回上页
+function goBack(){
+    history.back(-1);
+}

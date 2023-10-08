@@ -31,6 +31,7 @@ func ProcessPage(r *ghttp.Request) {
 		"activeband": "nodes", //注入到页面模版的变量
 		"activeitem": "",
 		"processes":  mInfo, //获取全部服务器节点列表
+		"nodeinfo":QueryNodeInfo(mUniid),
 	}
 	a.NeedLogin = false      //不需要登录
 	a.NeedPermission = false //不需要检查权限

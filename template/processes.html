@@ -1,3 +1,87 @@
-{{ range $k, $v := .data.processes.data}}
-    {{$v}}<hr>
-{{end}}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <div class="h2" >
+            <button class="btn btn-large btn-primary" style="font-size: 9pt;" onclick="goBack();">返回</button>
+            {{.data.nodeinfo.caption}} {{.pageTitle}}
+        </div>
+        <!--
+        <small class="stats-label float-right" style="font-size: 9px;">备注</small><br>
+        {{if eq .data.nodeinfo.comment "" }}
+        <small class="stats-label font-italic float-right">-</small>
+        {{else}}
+        <small class="stats-label font-italic float-right">{{.data.nodeinfo.comment}}</small>
+        {{end}}
+        -->
+        <div class="row">
+            <div class="col-2 panel bg-info m-2">
+                <small class="stats-label">访问地址</small>
+                <h5>{{.data.nodeinfo.ipaddress}}</h5>
+            </div>
+            <div class="col-2 panel bg-info m-2">
+                <small class="stats-label">位置</small>
+                <h5>{{.data.nodeinfo.location}}</h5>
+            </div>
+            <div class="col-2 panel bg-info m-2">
+                <small class="stats-label">资产编号</small>
+                <h5>{{.data.nodeinfo.reg_id}}</h5>
+            </div>
+            <div class="col-2 panel bg-info m-2">
+                <small class="stats-label">上线日期</small>
+                <h5>{{.data.nodeinfo.online_date}}</h5>
+            </div>
+            <div class="col-2 panel bg-info m-2">
+                <small class="stats-label">操作系统</small>
+                <h5>{{.data.nodeinfo.os}}</h5>
+            </div>
+        </div>
+        </div>
+        <div class="col-lg-2">
+            <div class="title-action">
+                <!--a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myNewServerModal"><i class="fa fa-plus"></i> 新增服务器 </a-->
+                <a href="#" class="btn btn-primary" onclick="ShowInserNodeModal();"><i class="fa fa-plus"></i> 新增进程
+                </a>
+                <a href="#" class="btn btn-primary" onclick="ShowInserNodeModal();"><i class="fa fa-plus"></i> 系统负载
+                </a>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <th>#</th>
+        <th>名称</th>
+        <th>组</th>
+        <th>状态码</th>
+        <th>状态</th>
+        <th>PID</th>
+        <th>时间</th>
+        <th>操作</th>
+
+        </thead>
+        {{ range $k, $v := .data.processes.data}}
+        {{if ne $v.group "listener"}}
+        <tr>
+            <td>{{$k}}</td>
+            <td>{{$v.name}}</td>
+            <td>{{$v.group}}</td>
+            <td>{{$v.state}}</td>
+            <td>
+                {{if eq $v.statename "RUNNING"}}
+                <label class="bg-primary">{{$v.statename}}</label>
+                {{else}}
+                <label class="bg-danger">{{$v.statename}}</label>
+                {{end}}
+            </td>
+            <td>{{$v.pid}}</td>
+            <td>{{$v.now| date "Y-m-d H:i:s"}}</td>
+            <td>
+                <button class="btn btn-sm btn-primary">启动进程</button>
+                <button class="btn btn-sm btn-primary">停止进程</button>
+                <button class="btn btn-sm btn-primary">标准输出</button>
+                <button class="btn btn-sm btn-primary">标准错误</button>
+                <button class="btn btn-sm btn-primary">查看设置</button>
+                <button class="btn btn-sm btn-primary">修改设置</button>
+            </td>
+        </tr>
+        {{end}}
+        {{end}}
+    </table>
