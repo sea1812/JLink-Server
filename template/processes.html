@@ -1,7 +1,7 @@
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <div class="h2" >
-            <button class="btn btn-large btn-primary" style="font-size: 9pt;" onclick="goBack();">返回</button>
+            <button class="btn btn-large btn-primary" style="font-size: 9pt;" onclick="JumpPage('/');">返回</button>
             {{.data.nodeinfo.caption}} {{.pageTitle}}
         </div>
         <!--
@@ -74,9 +74,9 @@
             <td>
                 <button class="btn btn-sm btn-primary" {{if ne $v.statename "STOPPED"}}disabled{{end}} onclick="startProcess('{{$v.name}}','{{$.data.nodeinfo.uni_id}}')">启动进程</button>
                 <button class="btn btn-sm btn-danger"  {{if ne $v.statename "RUNNING"}}disabled{{end}} onclick="stopProcess('{{$v.name}}','{{$.data.nodeinfo.uni_id}}')">停止进程</button>
-                <button class="btn btn-sm btn-info">标准输出</button>
-                <button class="btn btn-sm btn-info">标准错误</button>
-                <button class="btn btn-sm btn-secondary">查看设置</button>
+                <button class="btn btn-sm btn-info" onclick="stdOut('{{$v.name}}','{{$.data.nodeinfo.uni_id}}')">标准输出</button>
+                <button class="btn btn-sm btn-info" onclick="stdError('{{$v.name}}','{{$.data.nodeinfo.uni_id}}')">标准错误</button>
+                <button class="btn btn-sm btn-secondary" onclick="processInfo('{{$v.name}}','{{$.data.nodeinfo.uni_id}}')">进程设置</button>
                 <button class="btn btn-sm btn-secondary">修改设置</button>
                 <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
             </td>
@@ -84,3 +84,21 @@
         {{end}}
         {{end}}
     </table>
+<div class="modal inmodal fade" id="myLogModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="title">新增服务器</h4>
+            </div>
+            <div class="modal-body">
+                <div  id="log" style="height:300px;width:100%;overflow:auto">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">提交</button>
+            </div>
+        </div>
+    </div>
+</div>

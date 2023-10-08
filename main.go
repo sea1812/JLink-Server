@@ -22,6 +22,10 @@ func main() {
 	GroupRoot.ALL("/processes/{uni_id}", app.ProcessPage)   //显示客户端进程信息页面
 	GroupRoot.ALL("/api/startprocess", app.ApiStartProcess) //启动进程
 	GroupRoot.ALL("/api/stopprocess", app.ApiStopProcess)   //停止进程
+	GroupRoot.ALL("/api/stdout", app.ApiStdout)             //查看标准日志输出
+	GroupRoot.ALL("/api/stderror", app.ApiStderror)         //查看标准错误输出
+	GroupRoot.ALL("/api/processinfo", app.ApiProcessInfo)   //查看进程信息
+
 	fmt.Println("Run")
 	s.Run()
 }
