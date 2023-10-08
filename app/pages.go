@@ -26,12 +26,11 @@ func ProcessPage(r *ghttp.Request) {
 	a.ContentTemplate = "processes.html"                 //内容模版名称
 	a.FooterTemplate = "empty.html"                      //脚模版名称
 	mInfo, _ := QueryProcesses(mUniid)
-	fmt.Println("mInfo=", mInfo)
 	a.Data = g.Map{
 		"activeband": "nodes", //注入到页面模版的变量
 		"activeitem": "",
 		"processes":  mInfo, //获取全部服务器节点列表
-		"nodeinfo":QueryNodeInfo(mUniid),
+		"nodeinfo":   QueryNodeInfo(mUniid),
 	}
 	a.NeedLogin = false      //不需要登录
 	a.NeedPermission = false //不需要检查权限

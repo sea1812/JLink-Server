@@ -20,12 +20,16 @@ function goBack(){
 }
 //启动指定服务器上的指定进程
 function startProcess(AProcessName, ANodeUniid){
-    $.ajax(
+    $.ajax({
         method:"post",
         url:"/api/startprocess",
         data:{"processname":AProcessName, "nodeuniid":ANodeUniid},
-        success:function (result){
-            alert(result);
-        }
+        success:function (result) {
+            if(result=="ok"){
+                window.location.reload();
+            }else{
+                alert(result);
+            }
+        }}
     );
 }
